@@ -1,7 +1,11 @@
 package com.automationpractice.at;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 public class AuthenticationTest extends BaseTest{
     // 1.Перейти на сайт http://automationpractice.com/
@@ -18,7 +22,7 @@ public class AuthenticationTest extends BaseTest{
 
 
 
-
+@Timeout(2)
     @Test
     public void NegativeAuth1() throws InterruptedException{
         String text;
@@ -29,11 +33,11 @@ public class AuthenticationTest extends BaseTest{
 
         text = authenticationPage.getTextInformationNegative();
 
-        Assert.assertTrue(text.startsWith("There is 1 error"));
-        Assert.assertTrue(text.endsWith("Invalid email address."));
+    Assertions.assertTrue(text.startsWith("There is 1 error"));
+    Assertions.assertTrue(text.endsWith("Invalid email address."));
         Thread.sleep(1000);
     }
-
+    @Timeout(20)
     @Test
     public void NegativeAuth2() throws InterruptedException{
         String text;
@@ -44,8 +48,8 @@ public class AuthenticationTest extends BaseTest{
 
         text = authenticationPage.getTextInformationNegative();
 
-        Assert.assertTrue(text.startsWith("There is 1 error"));
-        Assert.assertTrue(text.endsWith("Invalid password."));
+        Assertions.assertTrue(text.startsWith("There is 1 error"));
+        Assertions.assertTrue(text.endsWith("Invalid password."));
         Thread.sleep(1000);
     }
 }
